@@ -71,6 +71,22 @@ app.get("/scrape", function(req, res) {
   });
 });
 
+
+// Test to see if it will duplicate
+app.post("/newPost", function(req,res){
+  console.log(req.body);
+  db.Article.findOne({title:req.body.title}, function(err,docs){
+    if (docs) {
+      console.log(`found one`);
+      console.log(docs);
+      res.json(docs);
+    } else {
+      console.log(`none matched`)
+      res.end();
+    }
+  })
+})
+
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
