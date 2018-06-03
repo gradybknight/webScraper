@@ -74,7 +74,7 @@ app.get("/scrape", function(req, res) {
 
 // Test to see if it will duplicate
 app.post("/newPost", function(req,res){
-  console.log(req.body);
+  console.log(req.body.title);
   db.Article.findOne({title:req.body.title}, function(err,docs){
     if (docs) {
       console.log(`found one`);
